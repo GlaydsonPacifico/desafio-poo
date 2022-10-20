@@ -1,5 +1,4 @@
-import br.com.dio.desafio.dominio.Curso;
-import br.com.dio.desafio.dominio.Mentoria;
+import br.com.dio.desafio.dominio.*;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -29,9 +28,39 @@ public class Main {
         mentoria1.setDescricao("Criando sua primeira API com NodeJS");
         mentoria1.setData(LocalDate.now());
 
-        System.out.println(curso);
-        System.out.println(curso1);
-        System.out.println(mentoria);
-        System.out.println(mentoria1);
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp Java Developer");
+        bootcamp.setDescricao("Aprende Java de forma prática e rápida e se torne um desenvolvedor");
+        bootcamp.getConteudos().add(curso);
+
+        Bootcamp bootcamp1 = new Bootcamp();
+        bootcamp1.setNome("Bootcamp Javascript Fullstack");
+        bootcamp1.setDescricao("Seja um fullstack especializado em NodeJS");
+        bootcamp1.getConteudos().add(curso1);
+
+        Dev devInscrito = new Dev();
+        System.out.println("Qual seu nome?");
+        String name = (sc.nextLine());
+        devInscrito.setNome(name);
+        System.out.println("Bem vindo " + devInscrito.getNome());
+
+        System.out.println("Escolha se Bootcamp, digite 1 ou 2:\n 1 - Bootcamp Java Developer\n 2 - Bootcamp Javascript Fullstack");
+        int num = sc.nextInt();
+        switch (num) {
+            case 1:
+                devInscrito.inscreverBootcamp(bootcamp);
+                System.out.println("Você foi inscrito no: \n" + bootcamp);
+                break;
+            case 2:
+                devInscrito.inscreverBootcamp(bootcamp1);
+                System.out.println(bootcamp1);
+                break;
+            default:
+                System.out.println("Escolha inválida");
+        }
+
+
+
+        System.out.println("Obrigado por se inscrever conosco!");
     }
 }
